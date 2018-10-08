@@ -44,7 +44,7 @@
     text-align: center;
     list-style-type: none;
     position: relative;
-    padding: 20px 10px;
+    padding: 10px 5px;
     transition: all 0.5s;
   }
   .org-chart li::before, .org-chart li::after {
@@ -54,7 +54,7 @@
     right: 50%;
     border-top: 1px solid #ccc;
     width: 50%;
-    height: 20px;
+    height: 10px;
   }
   .org-chart li::after {
     right: auto;
@@ -81,11 +81,11 @@
     text-decoration: none;
     color: #666;
     display: inline-block;
-    padding: 20px 10px;
+    padding: 4px 5px;
     transition: all 0.5s;
     background: #fff;
-    min-width: 180px;
-    border-radius: 6px;
+    min-width: 0px;
+    border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   .org-chart li .user:hover, .org-chart li .user:hover + ul li .user {
@@ -122,12 +122,12 @@
     margin: 15px 0 0;
     font-weight: 300;
   }
-  .org-chart li .user .role {
+  .org-chart li .user .description {
     font-weight: 600;
     margin-bottom: 10px;
     margin-top: 5px;
   }
-  .org-chart li .user .manager {
+  .org-chart li .user .generation {
     font-size: 12px;
     color: #b21e04;
   }
