@@ -1,134 +1,101 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    background: #22659c;
-  }
+/*Now the CSS*/
+* {margin: 0; padding: 0;}
 
-  h1, p {
-	color: #fff;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 600;
-	text-transform: uppercase;
-	line-height: 0.8;
+.tree{width:3000px;}
 
-    }
+.tree ul {
+	padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
 
-    h1 {
-	font-size: 36pt;
-	text-align: center;
-	line-height: .2em;
-    }
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
 
-  .org-chart {
-    display: flex;
-    justify-content: center;
-  }
-  .org-chart ul {
-    padding-top: 20px;
-    position: relative;
-    transition: all 0.5s;
-  }
-  .org-chart ul ul::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    border-left: 1px solid #ccc;
-    width: 0;
-  }
-  .org-chart li {
-    float: left;
-    text-align: center;
-    list-style-type: none;
-    position: relative;
-    padding: 10px 5px;
-    transition: all 0.5s;
-  }
-  .org-chart li::before, .org-chart li::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 50%;
-    border-top: 1px solid #ccc;
-    width: 50%;
-    height: 10px;
-  }
-  .org-chart li::after {
-    right: auto;
-    left: 50%;
-    border-left: 1px solid #ccc;
-  }
-  .org-chart li:only-child::after, .org-chart li:only-child::before {
-    display: none;
-  }
-  .org-chart li:only-child {
-    padding-top: 0;
-  }
-  .org-chart li:first-child::before, .org-chart li:last-child::after {
-    border: 0 none;
-  }
-  .org-chart li:last-child::before {
-    border-right: 1px solid #ccc;
-    border-radius: 0 5px 0 0;
-  }
-  .org-chart li:first-child::after {
-    border-radius: 5px 0 0 0;
-  }
-  .org-chart li .user {
-    text-decoration: none;
-    color: #666;
-    display: inline-block;
-    padding: 4px 5px;
-    transition: all 0.5s;
-    background: #fff;
-    min-width: 0px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  }
-  .org-chart li .user:hover, .org-chart li .user:hover + ul li .user {
-    background: #b5d5ef;
-    color: #002A50;
-    transition: all 0.15s;
-    -webkit-transform: translateY(-5px);
-            transform: translateY(-5px);
-    box-shadow: inset 0 0 0 3px #76b1e1, 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  }
-  .org-chart li .user:hover img, .org-chart li .user:hover + ul li .user img {
-    box-shadow: 0 0 0 5px #4c99d8;
-  }
-  .org-chart li .user:hover + ul li::after,
-  .org-chart li .user:hover + ul li::before,
-  .org-chart li .user:hover + ul::before,
-  .org-chart li .user:hover + ul ul::before {
-    border-color: #94a0b4;
-  }
-  .org-chart li .user > div, .org-chart li .user > a {
-    font-size: 12px;
-  }
-  .org-chart li .user img {
-    margin: 0 auto;
-    max-width: 60px;
-    max-width: 60px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 5px #aaa;
-  }
-  .org-chart li .user .name {
-    font-size: 16px;
-    margin: 15px 0 0;
-    font-weight: 300;
-  }
-  .org-chart li .user .description {
-    font-weight: 600;
-    margin-bottom: 10px;
-    margin-top: 5px;
-  }
-  .org-chart li .user .generation {
-    font-size: 12px;
-    color: #b21e04;
-  }
-  
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #666;
+	font-size: 11px;
+	display: inline-block;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after, 
+.tree li a:hover+ul li::before, 
+.tree li a:hover+ul::before, 
+.tree li a:hover+ul ul::before{
+	border-color:  #94a0b4;
+}
