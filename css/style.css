@@ -1,7 +1,11 @@
 /*Now the CSS*/
 * {margin: 0; padding: 0;}
 
-.tree{width:3000px;}
+body{
+    overflow-y : auto;
+}
+
+.tree{width:4000px;}
 
 .tree ul {
 	padding-top: 20px; position: relative;
