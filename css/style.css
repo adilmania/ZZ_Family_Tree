@@ -2,10 +2,11 @@
 * {margin: 0; padding: 0;}
 
 body{
-    overflow-y : auto;
+	overflow-y : auto;
+	overflow-x : auto;
 }
 
-.tree{width:4000px;}
+.tree{width:10000px;}
 
 .tree ul {
 	padding-top: 20px; position: relative;
